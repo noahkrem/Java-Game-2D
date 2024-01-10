@@ -1,0 +1,7 @@
+Tiles to make:
+- Grass tile could have even less detail
+
+1. Earth tile(s), for a path
+2. Mossy flagstone
+3. Earthy flagstone
+4. Large tree?
