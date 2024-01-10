@@ -23,8 +23,8 @@ public class Player extends Entity {
         this.keyH = keyH;
 
         // Player character's position is always on the middle of the screen
-        screenX = gp.screenWidth/2;
-        screenY = gp.screenHeight/2;
+        screenX = gp.screenWidth/2 - gp.tileSize/2;
+        screenY = gp.screenHeight/2 - gp.tileSize/2;
 
         setDefaultValues();
         getPlayerImage();
