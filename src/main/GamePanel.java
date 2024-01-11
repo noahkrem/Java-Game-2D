@@ -41,6 +41,9 @@ public class GamePanel extends JPanel implements Runnable {
     // Instantiate the keyHandler we have created
     KeyHandler keyH = new KeyHandler();
 
+    // Instantiate the collisionChecker
+    public CollisionChecker collisionC = new CollisionChecker(this);
+
     // A thread of execution in our program. Multiple threads can run concurrently
     Thread gameThread;
     public Player player = new Player(this, keyH);

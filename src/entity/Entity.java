@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 // Contains characteristics that all entities will have
@@ -16,5 +17,9 @@ public class Entity {
     // Used for the walking animation
     public int spriteCounter = 0;
     public int spriteNum = 1;
+
+    // Used for collision detection
+    public Rectangle solidArea;
+    public boolean collisionOn = false;
 
 }

@@ -13,9 +13,9 @@ import main.GamePanel;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tile;
+    public Tile[] tile;
     // This will store our map information
-    int mapTileNum[][];
+    public int mapTileNum[][];
 
     // Constructor for our TileManager class
     public TileManager (GamePanel gp) {
@@ -37,6 +37,7 @@ public class TileManager {
             
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/small-tree-tile.png"));
+            tile[1].collision = true;
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/cracked-flagstone.png"));
