@@ -101,16 +101,27 @@ public class TileManager {
             int tileNum = mapTileNum[worldCol][worldRow];
 
             // To determine the x and y values at which we draw tiles
+            // NOTE: would like to go further in depth as to why this logic works
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
             // Draw tiles at the specified coordinates, which we have calculated above
-            g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            // However, we do not want to draw tiles that are not visible on the screen,
+            //  as this could slow down the performance of our game
+            if ( worldX > (gp.player.worldX - gp.player.screenX - gp.tileSize) &&
+                    worldX < (gp.player.worldX + gp.player.screenX + gp.tileSize) &&
+                    worldY > (gp.player.worldY - gp.player.screenY - gp.tileSize) &&
+                    worldY < (gp.player.worldY + gp.player.screenY + gp.tileSize) ) {
+
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+            } 
+
             worldCol++;
 
-            if (worldCol == gp.maxScreenCol) {
+            if (worldCol == gp.maxWorldCol) {
                 worldCol = 0;
                 worldRow++;
             }
