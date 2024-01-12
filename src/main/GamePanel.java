@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import entity.Player;
+import object.SuperObject;
 import tile.TileManager;
 
 // This class inherits the JPanel class
@@ -44,9 +45,16 @@ public class GamePanel extends JPanel implements Runnable {
     // Instantiate the collisionChecker
     public CollisionChecker collisionC = new CollisionChecker(this);
 
+    // Instantiate the AssetSetter
+    public AssetSetter assetS = new AssetSetter(this);
+
     // A thread of execution in our program. Multiple threads can run concurrently
     Thread gameThread;
     public Player player = new Player(this, keyH);
+
+    // We can display up to 10 objects at one time, but
+    //  we can have more than 10 objects in our game
+    public SuperObject obj[] = new SuperObject[10];
 
     public GamePanel() {
         
