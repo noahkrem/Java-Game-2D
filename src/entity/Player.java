@@ -39,7 +39,7 @@ public class Player extends Entity {
         // These are the start coordinates, we can change them to whatever we want
         worldX = gp.tileSize * 25;
         worldY = gp.tileSize * 25;
-        speed = 5;
+        speed = 8;
         direction = "down";
     }
 

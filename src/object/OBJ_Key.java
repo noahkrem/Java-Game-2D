@@ -6,12 +6,12 @@ import javax.imageio.ImageIO;
 
 public class OBJ_Key extends SuperObject {
 
-    public OBJ_Key () {
+    public OBJ_Key() {
 
         name = "Key";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("../res/objects/key.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("../res/objects/key-object.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

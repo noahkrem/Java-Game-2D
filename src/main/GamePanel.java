@@ -67,6 +67,12 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
+    // Call the game setup before starting the game
+    public void setupGame() {
+
+        assetS.setObject();
+    }
+
     public void startGameThread() {
         // NOTE: "this" is the JPanel in this case
         gameThread = new Thread(this);
@@ -134,6 +140,15 @@ public class GamePanel extends JPanel implements Runnable {
         // Call the draw tile function
         // Must come before drawing the player, since the player is on the "top"
         tileM.draw(g2);
+
+        // Items must be drawn after tiles
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i] != null) {
+                obj[i].draw(g2, this);
+            }
+        }
+
+        // Must come last
         player.draw(g2);
 
         g2.dispose(); // Save some memory

@@ -26,7 +26,7 @@ public class Main {
         // We want to perform this step last in our setup
         window.setVisible(true);
 
-
+        gamePanel.setupGame();
 
         gamePanel.startGameThread();
     }
