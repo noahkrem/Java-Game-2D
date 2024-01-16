@@ -28,10 +28,15 @@ public class AssetSetter {
         gp.obj[2].worldX = 9 * gp.tileSize;
         gp.obj[2].worldY = 41 * gp.tileSize;
 
-        // Place a door at coordinates (41, 7)
+        // Place a door at coordinates (40, 6)
         gp.obj[3] = new OBJ_Door();
         gp.obj[3].worldX = 40 * gp.tileSize;
         gp.obj[3].worldY = 6 * gp.tileSize;
+
+        // Place a door at coordinates (10, 12)
+        gp.obj[4] = new OBJ_Door();
+        gp.obj[4].worldX = 10 * gp.tileSize;
+        gp.obj[4].worldY = 12 * gp.tileSize;
 
     }
 }
