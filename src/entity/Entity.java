@@ -20,6 +20,7 @@ public class Entity {
 
     // Used for collision detection
     public Rectangle solidArea;
+    public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
 }
