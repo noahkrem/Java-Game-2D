@@ -19,6 +19,9 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
+    // Indicates how many keys the player currently has
+    int hasKey = 0;
+
     public Player(GamePanel gp, KeyHandler keyH) {
         
         this.gp = gp;
@@ -90,6 +93,7 @@ public class Player extends Entity {
 
             // Check object collision
             int objIndex = gp.collisionC.checkObject(this, true);
+            objectInteraction(objIndex);
 
             // If no collision, player can move
             if (collisionOn == false) {
@@ -114,6 +118,28 @@ public class Player extends Entity {
                 }
                 // Reset sprite counter
                 spriteCounter = 0;
+            }
+        }
+    }
+
+    public void objectInteraction(int i) {
+
+        if (i != 999) {
+
+            String objectName = gp.obj[i].name;
+
+            switch (objectName) {
+            case "Key" :
+                hasKey++;
+                gp.obj[i] = null;
+                break;
+            case "Door" :
+                if (hasKey > 0) {
+                    gp.obj[i].collision = false;
+                    gp.obj[i] = null; // When the "open door" is implemented, delete this line
+                    hasKey--;
+                }
+                break;
             }
         }
     }

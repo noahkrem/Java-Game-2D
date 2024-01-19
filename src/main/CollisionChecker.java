@@ -75,7 +75,7 @@ public class CollisionChecker {
 
     public int checkObject(Entity entity, boolean player) {
         
-        int index = 0;
+        int index = 999;
 
         for (int i = 0; i < gp.obj.length; i++) {
 
@@ -94,28 +94,40 @@ public class CollisionChecker {
                     entity.solidArea.y -= entity.speed;
                     // Checks if these objects are touching or not
                     if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                        System.out.println("Up collision");
+                        if (gp.obj[i].collision == true)
+                            entity.collisionOn = true;
+                        if (player == true)
+                            index = i;
                     }
                     break;
                 case "down" :
                     entity.solidArea.y += entity.speed;
                     // Checks if these objects are touching or not
                     if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                        System.out.println("Down collision");
+                        if (gp.obj[i].collision == true)
+                            entity.collisionOn = true;
+                        if (player == true)
+                            index = i;
                     }
                     break;
                 case "left" :
                     entity.solidArea.x -= entity.speed;
                     // Checks if these objects are touching or not
                     if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                        System.out.println("Left collision");
+                        if (gp.obj[i].collision == true)
+                            entity.collisionOn = true;
+                        if (player == true)
+                            index = i;
                     }
                     break;
                 case "right" :
                     entity.solidArea.x += entity.speed;
                     // Checks if these objects are touching or not
                     if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                        System.out.println("Right collision");
+                        if (gp.obj[i].collision == true)
+                            entity.collisionOn = true;
+                        if (player == true)
+                            index = i;
                     }
                     break;
                 }
