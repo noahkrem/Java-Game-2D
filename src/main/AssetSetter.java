@@ -2,6 +2,7 @@ package main;
 
 import object.OBJ_Door;
 import object.OBJ_Key;
+import object.OBJ_Torch;
 
 public class AssetSetter {
  
@@ -37,6 +38,11 @@ public class AssetSetter {
         gp.obj[4] = new OBJ_Door();
         gp.obj[4].worldX = 10 * gp.tileSize;
         gp.obj[4].worldY = 12 * gp.tileSize;
+
+        // Place a torch at coordinates (40, 9)
+        gp.obj[5] = new OBJ_Torch();
+        gp.obj[5].worldX = 40 * gp.tileSize;
+        gp.obj[5].worldY = 9 * gp.tileSize;
 
     }
 }

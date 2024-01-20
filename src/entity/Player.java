@@ -21,6 +21,7 @@ public class Player extends Entity {
 
     // Indicates how many keys the player currently has
     int hasKey = 0;
+    boolean hasTorch = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         
@@ -148,6 +149,10 @@ public class Player extends Entity {
                     gp.obj[i] = null; // When the "open door" is implemented, delete this line
                     hasKey--;
                 }
+                break;
+            case "Torch" :
+                hasTorch = true;
+                gp.obj[i] = null;
                 break;
             }
         }
