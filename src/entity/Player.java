@@ -21,7 +21,7 @@ public class Player extends Entity {
 
     // Indicates how many keys the player currently has
     int hasKey = 0;
-    boolean hasTorch = false;
+    public boolean hasTorch = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         
@@ -32,7 +32,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 - gp.tileSize/2;
         screenY = gp.screenHeight/2 - gp.tileSize/2;
 
-        solidArea = new Rectangle(12, 16, gp.tileSize - 2*12, gp.tileSize - 16);
+        solidArea = new Rectangle(14, 18, gp.tileSize - 2*14, gp.tileSize - 18);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -90,7 +90,7 @@ public class Player extends Entity {
 
             // Check if the character is sprinting or not
             if (keyH.shiftPressed == true) {
-                speed = 8;
+                speed = 7;
             }
             // If the shift key is unpressed, we must change back to default speed 
             else {

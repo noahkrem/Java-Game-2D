@@ -5,3 +5,7 @@ Tiles to make:
 2. Mossy flagstone
 3. Earthy flagstone
 4. Large tree?
+
+
+Mechanics to implement:
+- "Fade in" effect for visible light would make it less choppy
