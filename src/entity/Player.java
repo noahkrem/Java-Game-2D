@@ -44,7 +44,7 @@ public class Player extends Entity {
         // These are the start coordinates, we can change them to whatever we want
         worldX = gp.tileSize * 25;
         worldY = gp.tileSize * 25;
-        speed = 8;
+        speed = 4;
         direction = "down";
     }
 
@@ -85,6 +85,15 @@ public class Player extends Entity {
             }
             else if (keyH.rightPressed == true) {
                 direction = "right";
+            }
+
+            // Check if the character is sprinting or not
+            if (keyH.shiftPressed == true) {
+                speed = 8;
+            }
+            // If the shift key is unpressed, we must change back to default speed 
+            else {
+                speed = 4;
             }
 
             // check tile collision

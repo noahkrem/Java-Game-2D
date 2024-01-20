@@ -9,6 +9,8 @@ public class Entity {
     // Difference between world coordinates and screen coordinates
     public int worldX, worldY;
     public int speed;
+    // Used for shift to sprint, also other entities' sprint
+    public boolean sprint = false;
 
     // Describes an image with an accessible buffer of image data
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
