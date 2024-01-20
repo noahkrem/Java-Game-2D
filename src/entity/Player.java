@@ -140,11 +140,13 @@ public class Player extends Entity {
 
             switch (objectName) {
             case "Key" :
+                gp.playSE(0);
                 hasKey++;
                 gp.obj[i] = null;
                 break;
             case "Door" :
                 if (hasKey > 0) {
+                    gp.playSE(1);
                     gp.obj[i].collision = false;
                     gp.obj[i] = null; // When the "open door" is implemented, delete this line
                     hasKey--;

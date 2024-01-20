@@ -30,30 +30,20 @@ public class GamePanel extends JPanel implements Runnable {
     // WORLD MAP PARAMETERS
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
-    public final int worldWidth = tileSize * maxWorldCol;
-    public final int worldHeight = tileSize * maxWorldRow;
 
     // FPS limit
     int FPS = 60;
 
-    // Instantiate the tile manager
+    // SYSTEM
     TileManager tileM = new TileManager(this);
-
-    // Instantiate the keyHandler we have created
     KeyHandler keyH = new KeyHandler();
-
-    // Instantiate the collisionChecker
+    Sound sound = new Sound();
     public CollisionChecker collisionC = new CollisionChecker(this);
-
-    // Instantiate the AssetSetter
     public AssetSetter assetS = new AssetSetter(this);
-
-    // A thread of execution in our program. Multiple threads can run concurrently
     Thread gameThread;
-    public Player player = new Player(this, keyH);
 
-    // We can display up to 10 objects at one time, but
-    //  we can have more than 10 objects in our game
+    // ENTITY AND OBJECT
+    public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
 
     public GamePanel() {
@@ -154,5 +144,22 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose(); // Save some memory
     }
 
-    
+    // We want to play music when an event happens (such as a chase)
+    // The index i is the value of the array index which stores the event music
+    public void playMusic(int i) {
+        
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic() {
+        sound.stop();
+    }
+
+    public void playSE(int i) {
+        
+        sound.setFile(i);
+        sound.play();
+    }
 }
