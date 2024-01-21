@@ -3,9 +3,13 @@ package entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import main.GamePanel;
+
 // Contains characteristics that all entities will have
 public class Entity {
     
+    GamePanel gp;
+
     // Difference between world coordinates and screen coordinates
     public int worldX, worldY;
     public int speed;
@@ -24,5 +28,10 @@ public class Entity {
     public Rectangle solidArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+
+    public Entity(GamePanel gp) {
+
+        this.gp = gp;
+    }
 
 }

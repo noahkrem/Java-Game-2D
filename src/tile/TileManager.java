@@ -32,10 +32,11 @@ public class TileManager {
 
     public void getTileImage() {
 
-        setup(0, "forest-grass-tile", false);
+        setup(0, "grass", false);
         setup(1, "small-tree-tile", true);
         setup(2, "cracked-flagstone", false);
         setup(3, "stone-on-flagstone", true);
+        setup(4, "grass-accented", false);
 
     }
 

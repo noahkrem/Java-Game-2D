@@ -14,7 +14,6 @@ import main.UtilityTools;
 // Contains characteristics specific to the player
 public class Player extends Entity {
 
-    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
@@ -26,7 +25,9 @@ public class Player extends Entity {
 
     public Player(GamePanel gp, KeyHandler keyH) {
         
-        this.gp = gp;
+        // Calling the construct of the "super class" of this class, passing gp
+        super(gp);
+    
         this.keyH = keyH;
 
         // Player character's position is always on the middle of the screen

@@ -6,9 +6,14 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed, shiftPressed;
+    GamePanel gp;
 
     // DEBUG
     public boolean checkDrawTime = false;
+
+    public KeyHandler(GamePanel gp) {
+        this.gp = gp;
+    }
 
     // Must add the below three overridden elements whenever implementing KeyListener
 
@@ -37,6 +42,14 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_SHIFT) {
             shiftPressed = true;
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            if (gp.gameState == gp.playState) {
+                gp.gameState = gp.pauseState;
+            }
+            else if (gp.gameState == gp.pauseState) {
+                gp.gameState = gp.playState;
+            }
         }
 
         // DEBUG

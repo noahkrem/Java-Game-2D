@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // SYSTEM
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
     public CollisionChecker collisionC = new CollisionChecker(this);
@@ -47,6 +47,11 @@ public class GamePanel extends JPanel implements Runnable {
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
+
+    // GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
     public GamePanel() {
         
@@ -64,6 +69,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         assetS.setObject();
         playMusic(3);
+        gameState = playState;
+
     }
 
     public void startGameThread() {
@@ -121,7 +128,12 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+        if (gameState == playState) {
+            player.update();
+        }
+        if (gameState == pauseState) {
+            // ADD CODE HERE
+        }
     }
 
     // "Graphics" has many functions that we can use to draw to the screen

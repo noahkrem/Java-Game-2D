@@ -11,3 +11,6 @@ Mechanics to implement:
 
 Map Details:
 - Make multiple maps, one for inside, one for outside
+
+Other: 
+- Replace keys with lockpicks maybe?
