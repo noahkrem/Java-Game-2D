@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
+import main.UtilityTools;
 
 public class TileManager {
 
@@ -31,24 +32,26 @@ public class TileManager {
 
     public void getTileImage() {
 
+        setup(0, "forest-grass-tile", false);
+        setup(1, "small-tree-tile", true);
+        setup(2, "cracked-flagstone", false);
+        setup(3, "stone-on-flagstone", true);
+
+    }
+
+    public void setup(int index, String imageName, boolean collision) {
+
+        UtilityTools uTool = new UtilityTools();
+
         try {
-
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/forest-grass-tile.png"));
-            
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/small-tree-tile.png"));
-            tile[1].collision = true;
-
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/cracked-flagstone.png"));
-
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/stone-on-flagstone.png"));
-
+            tile[index] = new Tile();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/" + imageName + ".png"));
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
+
     }
 
     // Step 1: Read the input from the text file
@@ -126,14 +129,14 @@ public class TileManager {
                         ( worldX > leftVisibleRange && worldX < rightVisibleRange && 
                         worldY > (topVisibleRange - gp.tileSize) && worldY < (bottomVisibleRange + gp.tileSize) ) ) {
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
                     // Must reset the composite to its original value, or else items will be drawn less opaque
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
                 }
                 // If tiles are inside visible range, draw normally
                 if ( worldX > leftVisibleRange && worldX < rightVisibleRange && worldY > topVisibleRange && worldY < bottomVisibleRange ) {
             
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
                 }
             } 
             // If the player is holding a torch
@@ -150,14 +153,14 @@ public class TileManager {
                             worldY > (topVisibleRange - gp.tileSize) && worldY < (bottomVisibleRange + gp.tileSize) ) ) ) {
 
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
                     // Must reset the composite to its original value, or else items will be drawn less opaque
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
                 }
 
                 if ( worldX > leftVisibleRange && worldX < rightVisibleRange && worldY > topVisibleRange && worldY < bottomVisibleRange ) {
 
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, null);
                 } 
             }
 

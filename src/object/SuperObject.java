@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
+import main.UtilityTools;
 
 public class SuperObject {
 
@@ -16,6 +17,7 @@ public class SuperObject {
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+    UtilityTools uTool = new UtilityTools();
 
     public void draw(Graphics2D g2, GamePanel gp) {
 

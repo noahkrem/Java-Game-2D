@@ -25,7 +25,7 @@ public class UI {
         this.gp = gp;
 
         arial_40 = new Font("Arial", Font.PLAIN, 40);
-        OBJ_Key key = new OBJ_Key();
+        OBJ_Key key = new OBJ_Key(gp);
         keyImage = key.image;
     }
 
@@ -35,6 +35,7 @@ public class UI {
         messageOn = true;
     }
 
+    // Tip for performance: Don't instantiate things inside the game loop
     public void draw(Graphics2D g2) {
 
         // Change this code later. Whatever sequence of text that marks the end of the game goes here

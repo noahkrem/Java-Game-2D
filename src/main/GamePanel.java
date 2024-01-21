@@ -127,11 +127,19 @@ public class GamePanel extends JPanel implements Runnable {
     // "Graphics" has many functions that we can use to draw to the screen
     public void paintComponent(Graphics g) {
 
+
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g; // Typecasting, Graphics2D has some useful functions
         // Call the draw tile function
         // Must come before drawing the player, since the player is on the "top"
+
+        // DEBUG
+        long drawStart = 0;
+        if (keyH.checkDrawTime == true) {
+            drawStart = System.nanoTime();
+        }
+
         tileM.draw(g2);
 
         // Items must be drawn after tiles
@@ -146,6 +154,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         // UI
         ui.draw(g2);
+
+        // DEBUG
+        if (keyH.checkDrawTime == true) {
+            long drawEnd = System.nanoTime();
+            long timePassed = drawEnd - drawStart;
+            System.out.println("Draw time: " + timePassed);
+        }
+        
 
         g2.dispose(); // Save some memory
     }

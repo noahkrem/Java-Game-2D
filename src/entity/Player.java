@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTools;
 
 // Contains characteristics specific to the player
 public class Player extends Entity {
@@ -51,20 +52,30 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
 
+        up1 = setup("knight-sprite-back-1");
+        up2 = setup("knight-sprite-back-2");
+        down1 = setup("knight-sprite-front-1");
+        down2 = setup("knight-sprite-front-2");
+        left1 = setup("knight-sprite-left-1");
+        left2 = setup("knight-sprite-left-2");
+        right1 = setup("knight-sprite-right-1");
+        right2 = setup("knight-sprite-right-2"); 
+
+    }
+
+    public BufferedImage setup(String imageName) {
+        
+        UtilityTools uTool = new UtilityTools();
+        BufferedImage image = null;
+
         try {
-
-            up1 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-back-1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-back-2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-front-1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-front-2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-left-1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-left-2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-right-1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("../res/player/knight-sprite-right-2.png")); 
-
+            image = ImageIO.read(getClass().getResourceAsStream("../res/player/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
+
+        return image;
     }
 
     // 1. Check input direction
@@ -205,6 +216,6 @@ public class Player extends Entity {
             break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, null);
     }
 }
