@@ -37,9 +37,11 @@ public class GamePanel extends JPanel implements Runnable {
     // SYSTEM
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
-    Sound sound = new Sound();
+    Sound music = new Sound();
+    Sound se = new Sound();
     public CollisionChecker collisionC = new CollisionChecker(this);
     public AssetSetter assetS = new AssetSetter(this);
+    public UI ui = new UI(this);
     Thread gameThread;
 
     // ENTITY AND OBJECT
@@ -61,6 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
 
         assetS.setObject();
+        playMusic(3);
     }
 
     public void startGameThread() {
@@ -123,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // "Graphics" has many functions that we can use to draw to the screen
     public void paintComponent(Graphics g) {
-        // Note: "super" is the parent class of this class, so JPanel
+
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g; // Typecasting, Graphics2D has some useful functions
@@ -141,6 +144,9 @@ public class GamePanel extends JPanel implements Runnable {
         // Must come last
         player.draw(g2);
 
+        // UI
+        ui.draw(g2);
+
         g2.dispose(); // Save some memory
     }
 
@@ -148,18 +154,18 @@ public class GamePanel extends JPanel implements Runnable {
     // The index i is the value of the array index which stores the event music
     public void playMusic(int i) {
         
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic() {
-        sound.stop();
+        music.stop();
     }
 
     public void playSE(int i) {
         
-        sound.setFile(i);
-        sound.play();
+        se.setFile(i);
+        se.play();
     }
 }

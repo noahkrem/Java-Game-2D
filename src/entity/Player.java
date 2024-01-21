@@ -20,7 +20,7 @@ public class Player extends Entity {
     public final int screenY;
 
     // Indicates how many keys the player currently has
-    int hasKey = 0;
+    public int hasKey = 0;
     public boolean hasTorch = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
@@ -143,6 +143,7 @@ public class Player extends Entity {
                 gp.playSE(0);
                 hasKey++;
                 gp.obj[i] = null;
+                gp.ui.showMessage("Found a key.");
                 break;
             case "Door" :
                 if (hasKey > 0) {
@@ -150,9 +151,13 @@ public class Player extends Entity {
                     gp.obj[i].collision = false;
                     gp.obj[i] = null; // When the "open door" is implemented, delete this line
                     hasKey--;
+                    gp.ui.showMessage("Door unlocked.");
+                } else {
+                    gp.ui.showMessage("Door is locked.");
                 }
                 break;
             case "Torch" :
+                gp.playSE(2);
                 hasTorch = true;
                 gp.obj[i] = null;
                 break;

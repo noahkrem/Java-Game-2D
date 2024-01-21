@@ -2,10 +2,12 @@ Tiles to make:
 - Grass tile could have even less detail
 
 1. Earth tile(s), for a path
-2. Mossy flagstone
-3. Earthy flagstone
-4. Large tree?
+2. Large tree?
 
 
 Mechanics to implement:
 - "Fade in" effect for visible light would make it less choppy
+- slower player framerate when walking, compared to sprinting
+
+Map Details:
+- Make multiple maps, one for inside, one for outside
