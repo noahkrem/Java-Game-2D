@@ -37,6 +37,11 @@ public class Entity {
     // Helps the npcs stay in the same direction
     public int actionCounterLock = 0;
 
+    // For npc and character dialogues
+    String dialogue[] = new String[20];
+    int dialogueIndex = 0;
+
+
     public Entity(GamePanel gp) {
 
         this.gp = gp;
@@ -47,6 +52,31 @@ public class Entity {
 
     }
 
+    public void speak() {
+
+        if (dialogue[dialogueIndex] == null) {
+            dialogueIndex = 0;
+        }
+
+        gp.ui.currentDialogue = dialogue[dialogueIndex];
+        dialogueIndex++;
+
+        switch (gp.player.direction) {
+        case "up" :
+            direction = "down";
+            break;
+        case "down" :
+            direction = "up";
+            break;
+        case "right" :
+            direction = "left";
+            break;
+        case "left" :
+            direction = "right";
+            break;
+        }
+    }
+    
     public void update() {
 
         setAction();
@@ -147,5 +177,4 @@ public class Entity {
 
         return image;
     }
-
 }

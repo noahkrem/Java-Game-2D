@@ -31,7 +31,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth/2 - gp.tileSize/2;
         screenY = gp.screenHeight/2 - gp.tileSize/2;
 
-        solidArea = new Rectangle(14, 18, gp.tileSize - 2*14, gp.tileSize - 18);
+        solidArea = new Rectangle(10, 12, gp.tileSize - 2*10, gp.tileSize - 12);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -166,8 +166,13 @@ public class Player extends Entity {
     public void interactNPC(int i) {
         
         if (i != 999) {
-            System.out.println("Hitting npc!");
+
+            if (gp.keyH.enterPressed == true) {
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            }
         }
+        gp.keyH.enterPressed = false;
     }
 
     public void draw(Graphics2D g2) {

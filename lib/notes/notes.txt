@@ -8,6 +8,7 @@ Tiles to make:
 Mechanics to implement:
 - "Fade in" effect for visible light would make it less choppy
 - slower player framerate when walking, compared to sprinting
+- When NPC runs into wall, change direction
 
 Map Details:
 - Make multiple maps, one for inside, one for outside

@@ -20,6 +20,8 @@ public class NPC_OldMan extends Entity {
         solidAreaDefaultY = solidArea.y;
         
         getImage();
+
+        setDialogue();
     }
 
     public void getImage() {
@@ -28,6 +30,15 @@ public class NPC_OldMan extends Entity {
         right2 = setup("../res/npc/old-man-right-2");
         left1 = setup("../res/npc/old-man-left-1");
         left2 = setup("../res/npc/old-man-left-2");
+
+    }
+
+    public void setDialogue() {
+
+        dialogue[0] = "Take heed...";
+        dialogue[1] = "Strange happenings occur in the northern \nparts of these woods.";
+        dialogue[2] = "...";
+        dialogue[3] = "...";
 
     }
 
@@ -50,5 +61,11 @@ public class NPC_OldMan extends Entity {
 
             actionCounterLock = 0;
         }
+    }
+
+    public void speak() {
+
+        super.speak();
+        
     }
 }
