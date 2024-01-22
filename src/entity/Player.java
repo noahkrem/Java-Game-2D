@@ -3,13 +3,10 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.UtilityTools;
 
 // Contains characteristics specific to the player
 public class Player extends Entity {
@@ -53,30 +50,15 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
 
-        up1 = setup("knight-sprite-back-1");
-        up2 = setup("knight-sprite-back-2");
-        down1 = setup("knight-sprite-front-1");
-        down2 = setup("knight-sprite-front-2");
-        left1 = setup("knight-sprite-left-1");
-        left2 = setup("knight-sprite-left-2");
-        right1 = setup("knight-sprite-right-1");
-        right2 = setup("knight-sprite-right-2"); 
+        up1 = setup("../res/player/knight-sprite-back-1");
+        up2 = setup("../res/player/knight-sprite-back-2");
+        down1 = setup("../res/player/knight-sprite-front-1");
+        down2 = setup("../res/player/knight-sprite-front-2");
+        left1 = setup("../res/player/knight-sprite-left-1");
+        left2 = setup("../res/player/knight-sprite-left-2");
+        right1 = setup("../res/player/knight-sprite-right-1");
+        right2 = setup("../res/player/knight-sprite-right-2"); 
 
-    }
-
-    public BufferedImage setup(String imageName) {
-        
-        UtilityTools uTool = new UtilityTools();
-        BufferedImage image = null;
-
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("../res/player/" + imageName + ".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return image;
     }
 
     // 1. Check input direction
@@ -109,13 +91,17 @@ public class Player extends Entity {
                 speed = 4;
             }
 
-            // check tile collision
+            // CHECK TILE COLLISION
             collisionOn = false;
             gp.collisionC.checkTile(this);
 
-            // Check object collision
+            // CHECK OBJECT COLLISION
             int objIndex = gp.collisionC.checkObject(this, true);
             objectInteraction(objIndex);
+
+            // CHECK NPC COLLISION
+            int npcIndex = gp.collisionC.checkEntity(this, gp.npc);
+            interactNPC(npcIndex);
 
             // If no collision, player can move
             if (collisionOn == false) {
@@ -174,6 +160,13 @@ public class Player extends Entity {
                 gp.obj[i] = null;
                 break;
             }
+        }
+    }
+
+    public void interactNPC(int i) {
+        
+        if (i != 999) {
+            System.out.println("Hitting npc!");
         }
     }
 
