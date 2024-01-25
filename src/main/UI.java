@@ -24,7 +24,11 @@ public class UI {
     public boolean gameFinished = false;
     public String currentDialogue = "";
 
+    // TITLE SCREEN
     BufferedImage titleScreen;
+    public int commandNum = 0;
+    public int titleScreenState = 0;
+    int screenLock = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -83,22 +87,67 @@ public class UI {
 
     public void drawTitleScreen() {
 
-        // TITLE PICTURE
-        g2.drawImage(titleScreen, 0, 0, 900, 600, null);
+        Font currentFont; // Change this later
 
-        // TITLE NAME
-        g2.setFont(publicPixel_32);
-        String text = "Bird's Eye";
-        int x = getXforCenteredText(text);
-        int y = gp.tileSize*1;
+        if (titleScreenState == 0) {
 
-        // TITLE SHADOW
-        g2.setColor(Color.gray);
-        g2.drawString(text, x+3, y+3);
+            // TITLE PICTURE
+            g2.drawImage(titleScreen, 0, 0, 900, 600, null);
 
-        // TITLE
-        g2.setColor(Color.white);
-        g2.drawString(text, x, y);
+            // TITLE NAME
+            g2.setFont(publicPixel_32);
+            String text = "Bird's Eye";
+            int x = getXforCenteredText(text);
+            int y = gp.tileSize*1;
+
+            // TITLE SHADOW
+            g2.setColor(Color.gray);
+            g2.drawString(text, x+3, y+3);
+
+            // TITLE
+            g2.setColor(Color.white);
+            g2.drawString(text, x, y);
+
+            // MENU
+            currentFont = publicPixel.deriveFont(24F);
+            g2.setFont(currentFont);
+
+            text = "NEW GAME";
+            x = getXforCenteredText(text);
+            y += gp.tileSize*8;
+            g2.drawString(text, x, y);
+            if (commandNum == 0) {
+                g2.drawString(">", x - gp.tileSize, y - gp.tileSize/16); // A cursor
+            }
+
+            // NOTE: Have not implemented save and load yet
+            text = "LOAD GAME";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 1) {
+                g2.drawString(">", x - gp.tileSize, y - gp.tileSize/16); // A cursor
+            }
+
+            text = "QUIT GAME";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 2) {
+                g2.drawString(">", x - gp.tileSize, y - gp.tileSize/16); // A cursor
+            }
+        }
+        else if (titleScreenState == 1) {
+            
+            // Anything can go here, currently just some credits
+            // Could do a cinematic, a class selection, a story overview, etc.
+            g2.setFont(publicPixel_18);
+            String text = "A game made by Nonak";
+            int x = getXforCenteredText(text);
+            int y = gp.screenHeight/2;
+            g2.drawString(text, x, y);
+        }
+
     }
 
     public void drawPauseScreen() {
@@ -108,6 +157,8 @@ public class UI {
         int y = gp.screenHeight/2;
     
         g2.drawString(text, x, y);
+
+        // IMPLEMENT A "FADE IN", "FADE OUT" FOR THE TEXT HERE
     }
 
     public void drawDialogueScreen() {
