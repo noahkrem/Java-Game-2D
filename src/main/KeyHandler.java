@@ -56,7 +56,13 @@ public class KeyHandler implements KeyListener {
                     }
                 }
             }
-        }
+            else if (gp.ui.titleScreenState == 1) {
+                if (code == KeyEvent.VK_ENTER) {
+                        gp.gameState = gp.playState;
+                        gp.playMusic(3);
+                    }
+                }
+            }
 
         // PLAY STATE
         if (gp.gameState == gp.playState) {
