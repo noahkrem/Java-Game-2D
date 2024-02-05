@@ -15,3 +15,7 @@ Map Details:
 
 Other: 
 - Replace keys with lockpicks maybe?
+
+UI: 
+- Health bar could be thinner
+    - Also blends into the dark background

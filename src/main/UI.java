@@ -10,6 +10,9 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import object.OBJ_Health;
+import object.SuperObject;
+
 
 public class UI {
     
@@ -18,6 +21,7 @@ public class UI {
     Font publicPixel;
     Font publicPixel_18;
     Font publicPixel_32;
+    BufferedImage health_full, health_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -51,6 +55,11 @@ public class UI {
             e.printStackTrace();
         }
 
+        // CREATE HUD OBJECT
+        SuperObject health = new OBJ_Health(gp);
+        health_full = health.image;
+        health_blank = health.image2;
+
     }
 
     public void showMessage(String text) {
@@ -73,15 +82,46 @@ public class UI {
         }
         // PLAY STATE
         if (gp.gameState == gp.playState) {
-            // CODE HERE
+            drawPlayerLife();
         }
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
+            drawPlayerLife();
             drawPauseScreen();
         }
         // PAUSE STATE
         if (gp.gameState == gp.dialogueState) {
+            drawPlayerLife();
             drawDialogueScreen();
+        }
+    }
+
+    public void drawPlayerLife() {
+
+        gp.player.life = 2;
+
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+        int i = 0;
+
+        // DRAW MAX LIFE
+        while (i < gp.player.maxLife) {
+            // Draw the blank health bars corresponding to the player's max life
+            g2.drawImage(health_blank, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // RESET
+        x = gp.tileSize/2;
+        y = gp.tileSize/2;
+        i = 0;
+
+        // DRAW CURRENT LIFE
+        while (i < gp.player.life) {
+            g2.drawImage(health_full, x, y, null);
+            i++;
+            x += gp.tileSize;
         }
     }
 

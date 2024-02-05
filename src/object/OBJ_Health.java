@@ -18,8 +18,8 @@ public class OBJ_Health extends SuperObject {
         try {
             image = ImageIO.read(getClass().getResourceAsStream("../res/objects/health-bar-full.png"));
             image2 = ImageIO.read(getClass().getResourceAsStream("../res/objects/health-bar-empty.png"));
-            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-            uTool.scaleImage(image2, gp.tileSize, gp.tileSize);
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+            image2 = uTool.scaleImage(image2, gp.tileSize, gp.tileSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
