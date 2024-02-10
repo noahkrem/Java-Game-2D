@@ -23,7 +23,7 @@ public class Entity {
 
     // Describes an image with an accessible buffer of image data
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public String direction;
+    public String direction = "down";
 
     // Used for the walking animation
     public int spriteCounter = 0;
@@ -40,6 +40,11 @@ public class Entity {
     // For npc and character dialogues
     String dialogue[] = new String[20];
     int dialogueIndex = 0;
+
+    // FROM OLD SUPEROBJECT CLASS
+    public BufferedImage image, image2;
+    public String name;
+    public boolean collision = false;
 
     // CHARACTER STATUS
     public int maxLife;

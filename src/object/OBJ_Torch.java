@@ -1,25 +1,17 @@
 package object;
 
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
+import entity.Entity;
 import main.GamePanel;
 
 // NOTE: Currently, character will not be seen holding a torch, but the item will give off light.
-public class OBJ_Torch extends SuperObject {
-    
-    GamePanel gp;
+public class OBJ_Torch extends Entity {
 
     public OBJ_Torch(GamePanel gp) {
 
-        name = "Torch";
+        super(gp);
 
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("../res/objects/torch-object.png"));
-            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        name = "Torch";
+        down1 = setup("../res/objects/torch-object");
+
     }
 }

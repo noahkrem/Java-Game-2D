@@ -10,8 +10,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import entity.Entity;
 import object.OBJ_Health;
-import object.SuperObject;
 
 
 public class UI {
@@ -56,7 +56,7 @@ public class UI {
         }
 
         // CREATE HUD OBJECT
-        SuperObject health = new OBJ_Health(gp);
+        Entity health = new OBJ_Health(gp);
         health_full = health.image;
         health_blank = health.image2;
 
