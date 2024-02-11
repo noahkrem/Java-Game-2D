@@ -1,6 +1,7 @@
 package main;
 
 import entity.NPC_OldMan;
+import monster.MON_Crow;
 import object.OBJ_Door;
 import object.OBJ_Key;
 import object.OBJ_Torch;
@@ -25,11 +26,6 @@ public class AssetSetter {
         gp.obj[1].worldX = 41 * gp.tileSize;
         gp.obj[1].worldY = 41 * gp.tileSize;
 
-        // Place a key at coordinates (9, 41)
-        gp.obj[2] = new OBJ_Key(gp);
-        gp.obj[2].worldX = 9 * gp.tileSize;
-        gp.obj[2].worldY = 41 * gp.tileSize;
-
         // Place a door at coordinates (40, 6)
         gp.obj[3] = new OBJ_Door(gp);
         gp.obj[3].worldX = 40 * gp.tileSize;
@@ -52,5 +48,16 @@ public class AssetSetter {
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].worldX = gp.tileSize*40;
         gp.npc[0].worldY = gp.tileSize*40;
+    }
+
+    public void setMonster() {
+        
+        gp.monster[0] = new MON_Crow(gp);
+        gp.monster[0].worldX = gp.tileSize*40;
+        gp.monster[0].worldY = gp.tileSize*9;
+
+        gp.monster[1] = new MON_Crow(gp);
+        gp.monster[1].worldX = gp.tileSize*40;
+        gp.monster[1].worldY = gp.tileSize*10;
     }
 }
