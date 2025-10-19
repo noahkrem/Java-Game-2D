@@ -6,22 +6,23 @@ plugins {
 group = 'com.example'
 version = '0.1.0'
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
     mavenCentral()
 }
 
 application {
-    // main class (update if different)
     mainClass = 'main.Main'
 }
 
 jar {
     manifest {
         attributes(
-            'Main-Class': application.mainClass
+            'Main-Class': 'main.Main'
         )
     }
     from(sourceSets.main.output)
@@ -31,6 +32,6 @@ jar {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
