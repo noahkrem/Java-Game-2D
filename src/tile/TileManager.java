@@ -46,7 +46,8 @@ public class TileManager {
 
         try {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("../res/tiles/" + imageName + ".png"));
+            String resourcePath = "/res/tiles/" + imageName + ".png";
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream(resourcePath));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch (IOException e) {
@@ -61,7 +62,13 @@ public class TileManager {
 
         try {
 
-            InputStream is = getClass().getResourceAsStream(path);
+            // Use absolute classpath path so resources load both from src and from inside the JAR
+            String resourcePath = path;
+            if (!resourcePath.startsWith("/")) {
+                // normalize ../res/... to /res/...
+                resourcePath = resourcePath.replaceAll("\\.\\./", "/");
+            }
+            InputStream is = getClass().getResourceAsStream(resourcePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;

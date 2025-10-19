@@ -38,7 +38,7 @@ public class UI {
         this.gp = gp;
         
         try {
-            InputStream is = getClass().getResourceAsStream("../res/font/PublicPixel.ttf");
+            InputStream is = getClass().getResourceAsStream("/res/font/PublicPixel.ttf");
             publicPixel = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class UI {
         publicPixel_32 = publicPixel.deriveFont(32F);
 
         try {
-            titleScreen = ImageIO.read(getClass().getResourceAsStream("../res/title/Bird's_Eye.png"));
+            titleScreen = ImageIO.read(getClass().getResourceAsStream("/res/title/Bird's_Eye.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

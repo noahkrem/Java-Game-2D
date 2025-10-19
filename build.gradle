@@ -19,6 +19,16 @@ application {
     mainClass = 'main.Main'
 }
 
+// Project layout note: this repo places Java sources in `src/` (e.g. `src/main/Main.java`),
+// not in the Gradle default `src/main/java`. Tell Gradle to compile from `src/`.
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
 jar {
     manifest {
         attributes(

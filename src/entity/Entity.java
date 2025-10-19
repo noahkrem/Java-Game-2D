@@ -178,7 +178,12 @@ public class Entity {
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            String path = imagePath;
+            if (!path.startsWith("/")) {
+                // normalize possible '../res/player/...' style paths to absolute classpath
+                path = path.replaceAll("\\.\\./", "/");
+            }
+            image = ImageIO.read(getClass().getResourceAsStream(path + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch (IOException e) {
             e.printStackTrace();

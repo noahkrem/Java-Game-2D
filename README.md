@@ -117,7 +117,6 @@ Include captions and short notes (what's being shown, controls used).
 
 ## Possible improvements / extension ideas
 
-- Use a build system (Maven/Gradle) to manage builds and create an executable JAR.
 - Implement save/load and multiple levels.
 - Add a sprite sheet loader and animation data format for easier character additions.
 - Expand AI behaviors and add pathfinding (A*).
@@ -130,15 +129,3 @@ Include captions and short notes (what's being shown, controls used).
 - Implemented resource management (maps, sprites, fonts, audio) and UI systems (title screen, HUD, dialogue), delivering a complete playable prototype suitable for demos and portfolio showcases.
 - Improved rendering stability by optimizing draw order with Y-sorting and using double-buffered Swing rendering, maintaining smooth animations at 60 FPS on desktop JVMs.
 
-## License
-
-Add a license file here (e.g., MIT) if you want to allow public use. To add: create `LICENSE` and paste your chosen license text.
-
----
-
-If you'd like, I can:
-- Add a simple Gradle build and a runnable JAR target.
-- Generate a short demo GIF by running the game and capturing frames (requires additional permissions/tools).
-- Draft a one-page portfolio blurb or deploy instructions for itch.io.
-
-Would you like me to add a Gradle build (recommended) and a runnable JAR next?"}
