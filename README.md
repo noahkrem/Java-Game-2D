@@ -41,7 +41,7 @@ Click on the gif below to see an example of gameplay.
 ![Gameplay demo](res/gifs/birds_eye_start_game.gif)
 
 ### NPC Interaction
-![NPC](res/screenshots/birds_eye_npc.png)
+![NPC](res/screenshots/birds_eye_npc_dialogue.png)
 
 ### Enemy Example
 ![Crow enemy](res/monster/crow-flying-right-2.png)
