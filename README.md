@@ -43,9 +43,6 @@ Click on the gif below to see an example of gameplay.
 ### NPC Interaction
 ![NPC](res/screenshots/birds_eye_npc_dialogue.png)
 
-### Enemy Example
-![Crow enemy](res/monster/crow-flying-right-2.png)
-
 ---
 
 ## 🧭 Project Structure
