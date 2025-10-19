@@ -36,6 +36,8 @@ This is an ongoing work-in-progress game, built to showcase strong fundamentals 
 ![Title screen](res/screenshots/birds_eye_menu.png)
 
 ### Gameplay
+
+Click on the gif below to see an example of gameplay.
 ![Gameplay demo](res/gifs/birds_eye_start_game.gif)
 
 ### NPC Interaction
