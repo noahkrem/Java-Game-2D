@@ -37,7 +37,7 @@ This project is an excellent resume piece to show fundamentals of game architect
 Prerequisites
 
 - Java Development Kit (JDK) 11 or newer installed and available on PATH. On Windows, you can install OpenJDK or Oracle JDK. On WSL/Ubuntu use `sudo apt install openjdk-17-jdk`.
-  - *_==IMPORTANT NOTE FOR WINDOWS USERS:_* This version of Gradle will not run on newer `jdk` versions. For safety, use `jdk-17`. You can change your system's version of Java by updating the JAVA_HOME path in Advanced System Settings -> Advanced -> Environment Variables -> System Variables.
+  - **IMPORTANT NOTE FOR WINDOWS USERS:** This version of Gradle will not run on newer `jdk` versions. For safety, use `jdk-17`. You can change your system's version of Java by updating the JAVA_HOME path in Advanced System Settings -> Advanced -> Environment Variables -> System Variables.
 - Gradle is not required locally. The Gradle wrapper (gradlew and gradlew.bat) is included in this repository and should be used for all builds, both locally and in CI.
 
 Build & run (Gradle)
